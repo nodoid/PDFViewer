@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel = "clr-namespace:PDFViewer.ViewModels"
+             xmlns:pdf="http://eightbot.com/maui/pdfview"
+             x:Class="PDFViewer.Views.MainPage"
+             x:DataType="ContentPage">
+
+    <ContentPage.BindingContext>
+        <viewmodel:PDFReaderViewModel x:Name="ViewModel" />
+    </ContentPage.BindingContext>
+    
+    <Grid Padding="12" VerticalOptions="Fill"
+          RowDefinitions="50,auto">
+        <HorizontalStackLayout HorizontalOptions="Center" Grid.Row="0" BackgroundColor="HotPink">
+            <Label Text="Route number" FontSize="14" VerticalTextAlignment="Center"/>
+            <Picker ItemsSource="{Binding Routes}" WidthRequest="200"
+                    SelectedIndexChanged="Picker_OnSelectedIndexChanged" x:Name="picker"/>
+        </HorizontalStackLayout>
+        <pdf:PdfView x:Name="pdfview"
+                                     HeightRequest="{Binding HeightSize}"
+                                     HorizontalOptions="Fill"
+                                     VerticalOptions="Fill"
+                                     EnableZoom="True"
+                                     EnableSwipe="True"
+                                     EnableTapGestures="False"
+                                     PageSpacing="10"
+                                     EnableAntialiasing="True"
+                                     UseBestQuality="True"
+                                     EnableAnnotationRendering="True"
+                                     DocumentLoaded="pdfview_DocumentLoaded"
+                                     Error="pdfview_Error"
+                 Grid.Row="1" 
+                     Source="{Binding SelectedRoute}"/>
+    </Grid>
+
+</ContentPage>
