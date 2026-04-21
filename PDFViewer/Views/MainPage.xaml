@@ -11,7 +11,7 @@
     </ContentPage.BindingContext>
     
     <Grid Padding="12" VerticalOptions="Fill"
-          RowDefinitions="50,auto">
+          RowDefinitions="auto,auto">
         <HorizontalStackLayout HorizontalOptions="Center" Grid.Row="0" BackgroundColor="HotPink">
             <Label Text="Route number" FontSize="14" VerticalTextAlignment="Center"/>
             <Picker ItemsSource="{Binding Routes}" WidthRequest="200"
