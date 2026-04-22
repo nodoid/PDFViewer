@@ -22,10 +22,17 @@ public partial class PDFReaderViewModel : ObservableObject
     string selectedRoute;
 
     [ObservableProperty]
+    int selectedRouteValue;
+
+    [ObservableProperty]
     double heightSize;
 
     [RelayCommand]
-    void ChooseTimetable(int choice) => SelectedRoute = $"Timetables/{filenames[choice]}";
+    void ChooseTimetable(int choice)
+    {
+        SelectedRoute = $"Timetables/{filenames[choice]}";
+        SelectedRouteValue = choice;
+    }
 
     public PDFReaderViewModel() => HeightSize = DeviceDisplay.Current.MainDisplayInfo.Height - 50;
 
@@ -42,6 +49,7 @@ public partial class PDFReaderViewModel : ObservableObject
         {
             // all good
             SelectedRoute = $"Timetables/{filenames[0]}";
+            SelectedRouteValue = 0;
         }
 
         // this could be improved upon to take a plain text file, read the contents and add to the Routes
