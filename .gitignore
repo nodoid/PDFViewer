@@ -439,3 +439,4 @@ FodyWeavers.xsd
 /.idea/.idea.PDFViewer/.idea/libraries/glide.xml
 /.idea/.idea.PDFViewer/.idea/libraries/maui.xml
 /.idea/.idea.PDFViewer/.idea/vcs.xml
+/global.json
