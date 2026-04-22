@@ -9,14 +9,16 @@
         <viewmodel:PDFReaderViewModel x:Name="ViewModel" />
     </ContentPage.BindingContext>
                                                   
-       <Grid Padding="12" VerticalOptions="Fill"
+       <Grid Padding="12" VerticalOptions="Fill" 
           RowDefinitions="auto,auto">
-            <HorizontalStackLayout HorizontalOptions="Center" HeightRequest="50" Grid.Row="0" BackgroundColor="HotPink">
-                <Label Text="Route number" FontSize="14" VerticalTextAlignment="Center"/>
-                <Picker ItemsSource="{Binding Routes}" WidthRequest="200"  SelectedIndex="{Binding SelectedRouteValue}"
-                    SelectedIndexChanged="Picker_OnSelectedIndexChanged" x:Name="picker"/>
+            <HorizontalStackLayout HorizontalOptions="Center" HeightRequest="50" Grid.Row="0" 
+                                   Padding="8">
+            <Label Text="Route number" FontSize="14" VerticalTextAlignment="Center" Margin="8,0"/>
+            <Picker ItemsSource="{Binding Routes}" WidthRequest="200"  SelectedIndex="{Binding SelectedRouteValue}"
+                    SelectedIndexChanged="Picker_OnSelectedIndexChanged" x:Name="picker" HeightRequest="20"/>
             </HorizontalStackLayout>
-            <pdf:PdfView x:Name="pdfview"
+           <pdf:PdfView x:Name="pdfview"   
+                         <!-- BackgroundColor="Transparent" -->
                                      HeightRequest="{Binding HeightSize}"
                                      HorizontalOptions="Fill"
                                      VerticalOptions="Fill"
@@ -31,6 +33,6 @@
                                      Error="pdfview_Error"
                                      Grid.Row="1"
                          DefaultPage="0"
-                     Source="{Binding SelectedRoute}"/>
+                     Source="{Binding SelectedRoute}"/>   
       </Grid>
 </ContentPage>
