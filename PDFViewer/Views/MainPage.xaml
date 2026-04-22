@@ -3,21 +3,20 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodel = "clr-namespace:PDFViewer.ViewModels"
              xmlns:pdf="http://eightbot.com/maui/pdfview"
-             x:Class="PDFViewer.Views.MainPage"
-             x:DataType="ContentPage">
+             x:Class="PDFViewer.Views.MainPage">
 
     <ContentPage.BindingContext>
         <viewmodel:PDFReaderViewModel x:Name="ViewModel" />
     </ContentPage.BindingContext>
-    
-    <Grid Padding="12" VerticalOptions="Fill"
+                                                  
+       <Grid Padding="12" VerticalOptions="Fill"
           RowDefinitions="auto,auto">
-        <HorizontalStackLayout HorizontalOptions="Center" Grid.Row="0" BackgroundColor="HotPink">
-            <Label Text="Route number" FontSize="14" VerticalTextAlignment="Center"/>
-            <Picker ItemsSource="{Binding Routes}" WidthRequest="200"
+            <HorizontalStackLayout HorizontalOptions="Center" HeightRequest="50" Grid.Row="0" BackgroundColor="HotPink">
+                <Label Text="Route number" FontSize="14" VerticalTextAlignment="Center"/>
+                <Picker ItemsSource="{Binding Routes}" WidthRequest="200"  SelectedIndex="{Binding SelectedRouteValue}"
                     SelectedIndexChanged="Picker_OnSelectedIndexChanged" x:Name="picker"/>
-        </HorizontalStackLayout>
-        <pdf:PdfView x:Name="pdfview"
+            </HorizontalStackLayout>
+            <pdf:PdfView x:Name="pdfview"
                                      HeightRequest="{Binding HeightSize}"
                                      HorizontalOptions="Fill"
                                      VerticalOptions="Fill"
@@ -30,8 +29,8 @@
                                      EnableAnnotationRendering="True"
                                      DocumentLoaded="pdfview_DocumentLoaded"
                                      Error="pdfview_Error"
-                 Grid.Row="1" 
+                                     Grid.Row="1"
+                         DefaultPage="0"
                      Source="{Binding SelectedRoute}"/>
-    </Grid>
-
+      </Grid>
 </ContentPage>
