@@ -18,6 +18,12 @@ public partial class MainPage : ContentPage
         ViewModel.Setup();
     }
 
+    protected override void OnHandlerChanged()
+    {
+        base.OnHandlerChanged();
+        picker.SelectedIndex = ViewModel.SelectedRouteValue;
+    }
+
     void ViewModelOnPropertyChanged(object? sender, PropertyChangedEventArgs e)
     {
         if (e.PropertyName == "SelectedRoute")
